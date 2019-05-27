@@ -1,6 +1,9 @@
 # konohana_net
 这是模仿 mobilenet_v3 和 fcos 架构写的简易单端输出的目标检测网络。用于此花亭奇谭的目标识别。<br>
 主要目的是用来玩。<br>
+res2block 结构是模仿 res2net 里面的<br>
+res2block 训练和预测需要的时间更长<br>
+通过观察训练日志，可能是通道数较少和使用 dwconv 问题，res2block版本好像略差于普通版本<br>
 
 ## 依赖：
 训练环境：GTX-1080-8G，GTX-970m-3G<br>
@@ -14,11 +17,9 @@ imageio-ffmpeg<br>
 PIL<br>
 matplotlib<br>
 
-
 ## 设计目标
 1.支持高分辨率同时训练时显存占用必须在3G以内的（我的机器就3G显存）<br>
 2.模型要简单而且便于修改<br>
-
 
 ## 关于预训练模型
 模型可以在3G显存时进行训练，但模型并不是在我的电脑上训练的，训练时 batch_size 设定为 9，两张显卡各自负责一个模型的训练。<br>
@@ -56,6 +57,9 @@ res2block的模型是从0开始训练的。<br>
 test_out 中可以看到常规模型的输出<br>
 test_out_det3 中可以看到res2block版模型输出<br>
 
+![测试输出A](https://github.com/One-sixth/konohana_net/blob/master/test_out/1_0.jpg)
+![测试输出B](https://github.com/One-sixth/konohana_net/blob/master/test_out/3_15.jpg)
+
 ### 动漫测试
 等待补充
 
@@ -74,7 +78,6 @@ net_det3.pt optim_det3.pt iter_det3.txt 为res2net版本模型的检查点文件
 执行 python3 _train.py.py 开始训练<br>
 训练日志输出到 logs 文件夹中<br>
 使用 start_tb.cmd 或者 start_tb.sh 启动 tensorboard 查看训练情况<br>
-
 
 # 常规模型结构图<br>
 ![网络结构图](https://github.com/One-sixth/konohana_net/blob/master/net_struct.svg)
