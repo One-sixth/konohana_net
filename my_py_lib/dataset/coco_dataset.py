@@ -4,9 +4,8 @@ This is a dataset for coco 2017
 
 import os
 from collections import OrderedDict
-from PIL import Image
+import imageio
 import numpy as np
-from matplotlib import pyplot as plt
 from pycocotools.coco import COCO
 
 if __name__ == '__main__':
@@ -154,7 +153,7 @@ class CocoDataset(Dataset):
         :return: numpy.array
         """
         a = self.get_label_info(label_id)
-        return np.asarray(Image.open(a['image_path']))
+        return np.asarray(imageio.imread(a['image_path']))
 
     def get_label_instance_bbox(self, label_id, *, iscrowd=None):
         """

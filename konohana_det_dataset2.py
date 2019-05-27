@@ -331,7 +331,7 @@ if __name__ == '__main__':
     import eval_utils2
 
     khdataset = KonohanaDataset(r'D:\DeepLearningProject\datasets\konohana_dataset')
-    bs = 100
+    bs = 2
     n_batch = khdataset.get_batch_count(bs)
     # imghw = (234, 416)
     # predict_hw = (15, 26)
@@ -348,7 +348,7 @@ if __name__ == '__main__':
     cv2.resizeWindow('center_ness', imghw[1], imghw[0])
 
     # import os
-    # os.makedirs('data_out', exist_ok=True)
+    # os.makedirs('dataset_out', exist_ok=True)
 
     for i in range(n_batch):
         t = time()
@@ -372,7 +372,7 @@ if __name__ == '__main__':
             confidence_ness = np.asarray((center_ness > 0.6) * 255, np.uint8)
             cv2.imshow('confidence_ness', confidence_ness)
 
-            imageio.imwrite('dataset_out/{}.jpg'.format(i*bs + b), img)
+            # imageio.imwrite('dataset_out/{}.jpg'.format(i*bs + b), img)
 
             img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
             cv2.imshow('img', img)

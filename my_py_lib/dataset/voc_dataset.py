@@ -5,9 +5,8 @@ This is a dataset for pascal voc 2012
 import os
 from collections import OrderedDict
 from xml.dom.minidom import parse
-from PIL import Image
+import imageio
 import numpy as np
-from matplotlib import pyplot as plt
 
 if __name__ == '__main__':
     from dataset import Dataset
@@ -184,7 +183,7 @@ class VocDataset(Dataset):
         :return: numpy.array
         """
         a = self.label_info[label_id]
-        return np.asarray(Image.open(os.path.join(self.img_file_root, a[0])))
+        return imageio.imread(os.path.join(self.img_file_root, a[0]))
 
     def get_label_instance_bbox(self, label_id):
         """

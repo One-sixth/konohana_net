@@ -1,15 +1,9 @@
 # 图像处理
 
-# from PIL import Image
-# import skimage.transform
-from skimage.transform import resize
-import skimage.io
-from skimage.io import imread
-from skimage.io import imshow
+import imageio
 import numpy as np
 import os
 import cv2
-from matplotlib import pyplot as plot
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -19,8 +13,9 @@ def show_image(img):
     :param img: numpy array
     :return: None
     """
-    plot.imshow(img)
-    plot.show()
+    img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+    cv2.imshow('show_img', img)
+    cv2.waitKey(0)
 
 
 def pad_picture(img, width, height):
@@ -36,15 +31,11 @@ def pad_picture(img, width, height):
     width_prop = width / s_width
     height_prop = height / s_height
     min_prop = min(width_prop, height_prop)
-    # img = img.resize((int(s_width * min_prop), int(s_height * min_prop)), Image.BICUBIC)
-    img = resize(img, (int(s_height * min_prop), int(s_width * min_prop)), mode='constant', preserve_range=True, anti_aliasing=True)
+    img = cv2.resize(img, (int(s_width * min_prop), int(s_height * min_prop)), interpolation=cv2.INTER_NEAREST)
     img_start_x = width / 2 - s_width * min_prop / 2
     img_start_y = height / 2 - s_height * min_prop / 2
-    # new_img = Image.new('RGB', (width, height), '#000000')
     new_img = np.zeros((height, width, s_depth), np.float32)
-    # new_img.paste(img, (int(img_start_x), int(img_start_y)))
     new_img[int(img_start_y):int(img_start_y)+img.shape[0], int(img_start_x):int(img_start_x)+img.shape[1]] = img
-
     return new_img
 
 
@@ -56,26 +47,24 @@ def crop_picture(img, width, height):
     :param height: output image height
     :return: output numpy array
     """
-
     s_height, s_width, s_depth = img.shape
     s_ratio = s_width / s_height
     ratio = width / height
     if s_ratio > ratio:
         need_crop_x = (s_width - s_height * ratio) / 2
         new_width = s_height * ratio
-        # img = img.crop((need_crop_x, 0, need_crop_x+new_width, s_height))
         img = img[0:s_height, int(need_crop_x):int(need_crop_x+new_width), :]
     elif s_ratio < ratio:
         need_crop_y = (s_height - s_width / ratio) / 2
         new_height = s_width / ratio
-        # img = img.crop((0, need_crop_y, s_width, need_crop_y+new_height))
         img = img[int(need_crop_y):int(need_crop_y+new_height), 0:s_width, :]
-    img = resize(img, (height, width), preserve_range=True)
-
+    img = cv2.resize(img, (width, height), interpolation=cv2.INTER_NEAREST)
     return img
 
 
-def put_text(img, text, pos, font_size=20, font_color=(0, 0, 255), bg_color=None, font_type="simhei.ttf"):
+_default_font_path = os.path.join(os.path.dirname(__file__), 'SourceHanSansCN-Regular.otf')
+
+def put_text(img, text, pos, font_size=20, font_color=(0, 0, 255), bg_color=None, font_type=None):
     """
     draw font on image
     :param img: np.array
@@ -95,6 +84,9 @@ def put_text(img, text, pos, font_size=20, font_color=(0, 0, 255), bg_color=None
     """
     if bg_color is not None and bg_color is not str:
         bg_color = tuple(bg_color)
+
+    if font_type is None:
+        font_type = _default_font_path
 
     pil_im = Image.fromarray(np.asarray(img, np.uint8))
     draw = ImageDraw.Draw(pil_im)
@@ -197,7 +189,7 @@ def draw_boxes_and_labels_to_image(image, classes, coords, scores=None, classes_
 def test():
     mod_dir = os.path.dirname(__file__)
 
-    im = imread(mod_dir + '/laska.png')
+    im = imageio.imread(mod_dir + '/laska.png')
 
     # test pad_picture
     new_img = pad_picture(im, 1024, 700)
@@ -223,8 +215,9 @@ def test():
     for i in range(16 * 16):
         m[i] = get_random_color()
     m = np.reshape(m, (16, 16, 3))
-    m = np.asarray(resize(m, (256, 256, 3), 0, 'constant', preserve_range=True, anti_aliasing=False), np.uint8)
-    show_image(np.asarray(m, np.uint8))
+    m = cv2.resize(m, (256, 256), interpolation=cv2.INTER_NEAREST)
+    # m = np.asarray(resize(m, (256, 256, 3), 0, 'constant', preserve_range=True, anti_aliasing=False), np.uint8)
+    show_image(m)
 
 
 if __name__ == '__main__':
