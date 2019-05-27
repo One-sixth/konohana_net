@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="81cm" height="75cm" viewBox="-402 -1042 1603 1483" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-400" y="-520" width="1600" height="960"/>
+  <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-400" y="-1040" width="1600" height="520"/>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-480" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-480" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-456.1">
+      <tspan x="229" y="-456.1">input 640x360x3</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-440" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-440" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-416.1">
+      <tspan x="229" y="-416.1">conv_bn 3-&gt;12 k=1 s=1 a=lrelu 640x360x12</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-400" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-400" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-376.1">
+      <tspan x="229" y="-376.1">resblock 12-&gt;24 k=5 s=2 a=lrelu n=2 320x180x24</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-360" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-360" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-336.1">
+      <tspan x="229" y="-336.1">resblock 24-&gt;48 k=5 s=2 a=lrelu n=3 160x90x48</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-320" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-320" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-296.1">
+      <tspan x="229" y="-296.1">resblock 48-&gt;96 k=5 s=2 a=lrelu n=6 80x45x96</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-280" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-280" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-256.1">
+      <tspan x="229" y="-256.1">resblock 96-&gt;144 k=5 s=2 a=lrelu n=4 40x23x144</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-240" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-240" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-216.1">
+      <tspan x="229" y="-216.1">resblock 144-&gt;192 k=5 s=2 a=lrelu n=4 20x12x192</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-200" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-200" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-176.1">
+      <tspan x="229" y="-176.1">resblock 192-&gt;192 k=5 s=2 a=lrelu n=4 10x6x192</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="0" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="0" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="23.9">
+      <tspan x="229" y="23.9">resblock 256-&gt;220 k=5 s=1 a=lrelu n=3 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="647.775" y="-280" width="167.45" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="647.775" y="-280" width="167.45" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="656.775" y="-256.1">
+      <tspan x="656.775" y="-256.1">upscale bilinear 80x45</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="647.775" y="-240" width="167.45" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="647.775" y="-240" width="167.45" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="656.775" y="-216.1">
+      <tspan x="656.775" y="-216.1">upscale bilinear 80x45</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="647.775" y="-200" width="167.45" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="647.775" y="-200" width="167.45" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="656.775" y="-176.1">
+      <tspan x="656.775" y="-176.1">upscale bilinear 80x45</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="600.989" y1="-260" x2="642.316" y2="-260"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="634.552,-255 644.552,-260 634.552,-265 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="600.989" y1="-220" x2="642.316" y2="-220"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="634.552,-215 644.552,-220 634.552,-225 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="600.989" y1="-180" x2="642.316" y2="-180"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="634.552,-175 644.552,-180 634.552,-185 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="800" y="-120" width="141.2" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="800" y="-120" width="141.2" height="38"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="809" y="-97.1">
+      <tspan x="809" y="-97.1">concat 80x45x624</tspan>
+    </text>
+  </g>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="600" y1="-300" x2="900" y2="-300"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="816.21" y1="-260" x2="880" y2="-260"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="816.22" y1="-220" x2="860" y2="-220"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="816.226" y1="-180" x2="840" y2="-180"/>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="900" y1="-300" x2="900" y2="-124.472"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="895,-132.236 900,-122.236 905,-132.236 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="880" y1="-260" x2="880" y2="-124.472"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="875,-132.236 880,-122.236 885,-132.236 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="860" y1="-220" x2="860" y2="-124.472"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="855,-132.236 860,-122.236 865,-132.236 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="840" y1="-180" x2="840" y2="-124.472"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="835,-132.236 840,-122.236 845,-132.236 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="-40" width="380" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="-40" width="380" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="-16.1">
+      <tspan x="229" y="-16.1">conv_bn 624-&gt;256 k=1 s=1 a=lrelu 80x45x256</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="100" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="100" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="123.9">
+      <tspan x="229" y="123.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="140" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="140" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="163.9">
+      <tspan x="229" y="163.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="180" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="180" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="203.9">
+      <tspan x="229" y="203.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="220" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="220" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="243.9">
+      <tspan x="229" y="243.9">conv_bn 220-&gt;5 k=1 s=1 a=None 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="600" y="100" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="100" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="609" y="123.9">
+      <tspan x="609" y="123.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="600" y="140" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="140" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="609" y="163.9">
+      <tspan x="609" y="163.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="600" y="180" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="180" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="609" y="203.9">
+      <tspan x="609" y="203.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="600" y="220" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="220" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="609" y="243.9">
+      <tspan x="609" y="243.9">conv_bn 220-&gt;30 k=1 s=1 a=None 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-180" y="100" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-180" y="100" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-171" y="123.9">
+      <tspan x="-171" y="123.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-180" y="140" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-180" y="140" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-171" y="163.9">
+      <tspan x="-171" y="163.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-180" y="180" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-180" y="180" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-171" y="203.9">
+      <tspan x="-171" y="203.9">conv_bn 220-&gt;220 k=1 s=1 a=lrelu 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-180" y="220" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-180" y="220" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-171" y="243.9">
+      <tspan x="-171" y="243.9">conv_bn 220-&gt;2 k=1 s=1 a=None 80x45x220</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="800,-101 400,-100 400,-44.4721 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="395,-52.2361 400,-42.2361 405,-52.2361 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="320,40 320,60 -20,60 -20,95.5279 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-25,87.7639 -20,97.7639 -15,87.7639 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="380" y1="40" x2="380" y2="95.5279"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="375,87.7639 380,97.7639 385,87.7639 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="480,40 480,60 780,60 780,95.5279 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="775,87.7639 780,97.7639 785,87.7639 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-180" y="320" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-180" y="320" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-171" y="343.9">
+      <tspan x="-171" y="343.9">confidence d=1; center-ness d=1</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="320" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="320" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="229" y="343.9">
+      <tspan x="229" y="343.9">coords d=4; scale d=1</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="600" y="320" width="330.8" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="600" y="320" width="330.8" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="609" y="343.9">
+      <tspan x="609" y="343.9">class d=30</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-20" y1="260" x2="-20" y2="315.528"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-25,307.764 -20,317.764 -15,307.764 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="380" y1="260" x2="380" y2="315.528"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="375,307.764 380,317.764 385,307.764 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="780" y1="260" x2="780" y2="315.528"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="775,307.764 780,317.764 785,307.764 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-780" width="280" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-780" width="280" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-756.1">
+      <tspan x="-331" y="-756.1">conv_bn D-&gt;Dx2 k=1 s=1 a=lrelu</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-740" width="280" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-740" width="280" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-716.1">
+      <tspan x="-331" y="-716.1">dwconv_bn Dx2-&gt;Dx2 k=5 s=1 a=lrelu</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-700" width="280" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-700" width="280" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-676.1">
+      <tspan x="-331" y="-676.1">conv_bn Dx2-&gt;D k=1 s=1 a=None</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-820" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-820" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-796.1">
+      <tspan x="-331" y="-796.1">input BxDxHxW</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-860" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-860" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-836.1">
+      <tspan x="-331" y="-836.1">resblock in_ch == out_ch and stride == 1</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-660" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-660" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-636.1">
+      <tspan x="-331" y="-636.1">ADD</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-620" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-620" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-596.1">
+      <tspan x="-331" y="-596.1">output</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-20" y1="-780" x2="-20" y2="-664.472"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-25,-672.236 -20,-662.236 -15,-672.236 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="100" y="-780" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="-780" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="109" y="-756.1">
+      <tspan x="109" y="-756.1">conv_bn D-&gt;out_chx2 k=1 s=1 a=lrelu</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="100" y="-740" width="340.7" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="-740" width="340.7" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="109" y="-716.1">
+      <tspan x="109" y="-716.1">dwconv_bn out_chx2-&gt;out_chx2 k=5 s=1 a=lrelu</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="100" y="-700" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="-700" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="109" y="-676.1">
+      <tspan x="109" y="-676.1">conv_bn out_chx2-&gt;out_ch k=1 s=1 a=None</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="100" y="-820" width="620" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="-820" width="620" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="109" y="-796.1">
+      <tspan x="109" y="-796.1">input BxDxHxW</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="100" y="-860" width="620" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="-860" width="620" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="109" y="-836.1">
+      <tspan x="109" y="-836.1">resblock in_ch != out_ch and stride == 1</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="100" y="-660" width="620" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="-660" width="620" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="109" y="-636.1">
+      <tspan x="109" y="-636.1">ADD</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="100" y="-620" width="620" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="-620" width="620" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="109" y="-596.1">
+      <tspan x="109" y="-596.1">output</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="440" y="-780" width="280" height="120"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="440" y="-780" width="280" height="120"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="449" y="-716.1">
+      <tspan x="449" y="-716.1">conv_bn D-&gt;out_ch k=1 s=1 a=None</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="820" y="-780" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="-780" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="829" y="-756.1">
+      <tspan x="829" y="-756.1">conv_bn D-&gt;out_chx2 k=1 s=1 a=lrelu</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="820" y="-740" width="340.7" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="-740" width="340.7" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="829" y="-716.1">
+      <tspan x="829" y="-716.1">dwconv_bn out_chx2-&gt;out_chx2 k=5 s=s a=lrelu</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="820" y="-700" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="-700" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="829" y="-676.1">
+      <tspan x="829" y="-676.1">conv_bn out_chx2-&gt;out_ch k=1 s=1 a=None</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="820" y="-820" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="-820" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="829" y="-796.1">
+      <tspan x="829" y="-796.1">input BxDxHxW</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="820" y="-860" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="-860" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="829" y="-836.1">
+      <tspan x="829" y="-836.1">resblock stride &gt; 1</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="820" y="-660" width="340" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="-660" width="340" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="829" y="-636.1">
+      <tspan x="829" y="-636.1">output</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-980" width="220" height="40"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-980" width="220" height="40"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-956.1">
+      <tspan x="-331" y="-956.1">resblock 在不同条件下的结构</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-340" y="-480" width="220" height="118"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-340" y="-480" width="220" height="118"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="-331" y="-457.25">
+      <tspan x="-331" y="-457.25">主网络结构</tspan>
+      <tspan x="-331" y="-441.25"></tspan>
+      <tspan x="-331" y="-425.25">k 卷积核大小</tspan>
+      <tspan x="-331" y="-409.25">s 步长</tspan>
+      <tspan x="-331" y="-393.25">a 激活函数</tspan>
+      <tspan x="-331" y="-377.25">n 重复堆叠层数</tspan>
+    </text>
+  </g>
+</svg>
