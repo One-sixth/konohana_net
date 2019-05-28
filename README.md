@@ -110,7 +110,13 @@ test_out_det3 中可以更多看到res2block版模型输出<br>
 ![测试输出B](https://github.com/One-sixth/konohana_net/blob/master/test_out/3_15.jpg)
 
 ### Existing animation test output / 动漫测试
-等待补充
+Normal version model output
+常规模型输出
+https://github.com/One-sixth/konohana_net/blob/master/ep_10.mkv
+
+res2block version model output
+res2block版模型输出
+https://github.com/One-sixth/konohana_net/blob/master/ep_10_det3.mkv
 
 ## Train / 训练
 net.pt optim.pt iter.txt is checkpoint file for normal version model<br>
