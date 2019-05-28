@@ -19,7 +19,7 @@ def channel_shuffle(x, n_group: int):
     return x
 
 
-@torch.jit.script
+# @torch.jit.script
 def resize_ref(x, shortpoint, method: str='bilinear', align_corners: bool=True):
     """
     :type x: torch.Tensor

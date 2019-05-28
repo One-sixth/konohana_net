@@ -25,20 +25,26 @@ batch_size = 16
 n_epoch = 1
 # konohana_dataset_path=r'D:\DeepLearningProject\datasets\konohana_dataset'
 use_res2block = False
-video_in = r"[ANK-Raws] このはな綺譚 01 (BDrip 1920x1080 HEVC-YUV420P10 FLAC).mkv"
-video_out = 'out_ep_01.mkv'
+video_in = r"D:\ProjectDevelopment\konohana_net_project\konohana_net\AIR 02 「まち～town～」 BDrip FLACx2 5.1ch AC3 VFR SUP x264-ank.mkv"
+video_out = 'out_air_2_2.mkv'
 
+no_more = False
 can_exit = False
-run_cache = queue.Queue(200)
+write_cache = queue.Queue(200)
+read_cache = queue.Queue(200)
+
+video_fps = None
 
 
 def write_run():
+    _last_time = time.perf_counter()
+
     while True:
         try:
-            b = run_cache.get(True, 5)
+            b = write_cache.get(True, 5)
         except queue.Empty:
             time.sleep(1)
-            if can_exit and run_cache.qsize() == 0:
+            if can_exit and write_cache.qsize() == 0:
                 break
             continue
 
@@ -78,7 +84,35 @@ def write_run():
 
             out_img = cv2.cvtColor(out_img, cv2.COLOR_RGB2BGR)
             cv2.imshow('out_img', out_img)
-            cv2.waitKey(1000//24)
+
+            need_wait_time = 1000 / video_fps - (time.perf_counter()-_last_time)*1000
+            # print(need_wait_time)
+            need_wait_time = int(max(need_wait_time, 1))
+            _last_time = time.perf_counter()
+            cv2.waitKey(need_wait_time)
+
+
+def read_run(video_dataset):
+    global no_more
+    batch_img = []
+    while not no_more:
+        batch_img.clear()
+
+        for _ in range(batch_size):
+            try:
+                in_img = video_dataset.get_next_data()
+            except IndexError:
+                break
+            in_img = cv2.resize(in_img, (img_hw[1], img_hw[0]), interpolation=cv2.INTER_AREA)
+            batch_img.append(in_img)
+
+        if len(batch_img) == 0:
+            no_more = True
+        elif len(batch_img) < batch_size:
+            read_cache.put(np.asarray(batch_img, np.uint8))
+            no_more = True
+        else:
+            read_cache.put(np.asarray(batch_img, np.uint8))
 
 
 if __name__ == '__main__':
@@ -88,6 +122,7 @@ if __name__ == '__main__':
     video_dataset = imageio.get_reader(video_in)
     meta_data = video_dataset.get_meta_data()
     video_out = imageio.get_writer(video_out, codec=meta_data['codec'], fps=meta_data['fps'])
+    video_fps = meta_data['fps']
 
     net = Detector(img_hw, use_res2block=use_res2block).cuda()
     net.eval()
@@ -99,32 +134,33 @@ if __name__ == '__main__':
 
     print_params_size2(net)
 
+    # 使用 trace 加速
+    net = torch.jit.trace(net, torch.rand(batch_size, 3, *img_hw).cuda())
+
+    run_thread = Thread(target=read_run, args=(video_dataset,))
+    run_thread.start()
     write_thread = Thread(target=write_run)
     write_thread.start()
 
     while True:
-        batch_img2 = []
-        for _ in range(batch_size):
-            try:
-                in_img = video_dataset.get_next_data()
-            except IndexError:
+
+        try:
+            batch_img = read_cache.get(True, 5)
+        except queue.Empty:
+            time.sleep(1)
+            if no_more and read_cache.qsize() == 0:
                 break
-            in_img = cv2.resize(in_img, (img_hw[1], img_hw[0]), interpolation=cv2.INTER_AREA)
-            batch_img2.append(in_img)
+            continue
 
-        if len(batch_img2) == 0:
-            break
+        batch_x = torch.from_numpy(batch_img)
+        batch_x = (batch_x.permute(0, 3, 1, 2).float() / (255 / 2) - 1).cuda()
 
-        batch_img2 = np.asarray(batch_img2, np.uint8)
-        batch_img = torch.tensor(batch_img2)
-        batch_img = (batch_img.permute(0, 3, 1, 2).float() / (255 / 2) - 1).cuda()
-
-        net_out = net(batch_img)
+        net_out = net(batch_x)
 
         net_out = net_out.cpu().numpy()
 
-        batch_cache = [batch_img2, net_out]
-        run_cache.put(batch_cache)
+        batch_cache = [batch_img, net_out]
+        write_cache.put(batch_cache)
 
 
     can_exit = True
