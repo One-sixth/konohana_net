@@ -118,6 +118,24 @@ res2block version model output<br>
 res2block版模型输出<br>
 https://github.com/One-sixth/konohana_net/blob/master/ep_10_det3.mkv<br>
 
+### Test with your own images / 使用自己的图片进行测试
+Put your own image in the test_pic_in folder.<br>
+Execute command.<br>
+```
+python3 _test_with_pic.py
+```
+You can see the test output in test_pic_out.<br>
+
+在 test_pic_in 文件夹中放入你自己的图像<br>
+执行命令<br>
+```
+python3 _test_with_pic.py
+```
+你可以在 test_pic_out 中看到测试输出<br>
+
+![测试输出A](https://github.com/One-sixth/konohana_net/blob/master/test_pic_out/%E2%97%87%E2%97%86candy%E2%97%86%E2%97%87.jpg)
+![测试输出B](https://github.com/One-sixth/konohana_net/blob/master/test_pic_out/%E2%97%8F%20%E2%97%8B%20%E2%97%8F%20Rin%20%E2%97%8F%20%E2%97%8B%20%E2%97%8F.jpg)
+
 ## Train / 训练
 net.pt optim.pt iter.txt is checkpoint file for normal version model<br>
 Net_det3.pt optim_det3.pt iter_det3.txt is checkpoint file for res2block version model<br>
