@@ -18,12 +18,13 @@ def show_image(img):
     cv2.waitKey(0)
 
 
-def pad_picture(img, width, height):
+def pad_picture(img, width, height, interpolation=cv2.INTER_NEAREST):
     """
     padded picture to specified shape, then return this and padded mask
     :param img: input numpy array
     :param width: output image width
     :param height: output image height
+    :param interpolation: control img interpolation
     :return: output numpy array
     """
     s_height, s_width, s_depth = img.shape
@@ -31,7 +32,7 @@ def pad_picture(img, width, height):
     width_prop = width / s_width
     height_prop = height / s_height
     min_prop = min(width_prop, height_prop)
-    img = cv2.resize(img, (int(s_width * min_prop), int(s_height * min_prop)), interpolation=cv2.INTER_NEAREST)
+    img = cv2.resize(img, (int(s_width * min_prop), int(s_height * min_prop)), interpolation=interpolation)
     img_start_x = width / 2 - s_width * min_prop / 2
     img_start_y = height / 2 - s_height * min_prop / 2
     new_img = np.zeros((height, width, s_depth), np.float32)
